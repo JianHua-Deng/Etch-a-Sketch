@@ -3,7 +3,10 @@ const resetButton = document.querySelector(".resetButton");
 const eraseButton = document.querySelector(".eraser");
 const borderButton = document.querySelector(".toggleBorder");
 const slider = document.getElementById("slide-range");
+const colorPicker = document.getElementById("colorpicker");
 
+var selectedColor = "black"
+var currentColor = selectedColor;
 var drawEnabled = false;
 var eraserEnabled = false;
 var borderSwitch = true;
@@ -19,7 +22,6 @@ function setGrid(size){
             square.addEventListener("mousedown", mouseDown);
             square.addEventListener("mouseup", mouseUp);
             square.addEventListener("mouseover", drawHover);
-            
             gridRow.appendChild(square);        
         }
         gridContent.appendChild(gridRow);
@@ -27,33 +29,44 @@ function setGrid(size){
     setBorder();
 }
 
+function colorSelections(){
+    selectedColor = this.value;
+}
+
+//Either Draw a color, or erase it to white
 function drawHover(){
     if(drawEnabled){
-        if(eraserEnabled){
-            this.style.backgroundColor = "white"
-        }else{
-            this.style.backgroundColor = "black";
-        }
-        
+        this.style.backgroundColor = currentColor
     }
+
 }
 
 function mouseDown(){
     /*
     Changing color when clicked, but also enable such so that it changes color when dragged
-    This is different than drawHover, as that only change color of box when hovered onto
+    This is different than drawHover, as that function is for the situation when being hovered onto
     */
     drawEnabled = true;
     if(eraserEnabled){
         this.style.backgroundColor = "white";
+        currentColor = "white";
     }else{
-        this.style.backgroundColor = "black";
+        this.style.backgroundColor = selectedColor;
+        currentColor = selectedColor;
     }
-
 }
 
 function mouseUp(){
     drawEnabled = false;
+}
+
+//It highlights a button based on if its on or off
+function buttonEmphasis(onORoff, button){
+    if(onORoff){
+        button.style.backgroundColor = "red";
+    }else{
+        button.style.backgroundColor = "";
+    }
 }
 
 function toggleBorder(){
@@ -63,6 +76,7 @@ function toggleBorder(){
 
 function setBorder(){
     let gridSquare = document.querySelectorAll(".grid-square");
+    buttonEmphasis(borderSwitch, borderButton);
     if(borderSwitch){
         gridSquare.forEach(element => {element.style.border = "1px solid rgb(233, 232, 232)"});
     }else{
@@ -70,13 +84,10 @@ function setBorder(){
     }
 }
 
+//This is for changing the status of eraser variable, so that we know if the user is trying to erase or not
 function eraserToggle(){
     eraserEnabled = !eraserEnabled;
-    if(eraserEnabled){
-        eraseButton.style.border = "2px solid black";
-    }else{
-        eraseButton.style.border = "1px solid black";
-    }
+    buttonEmphasis(eraserEnabled, eraseButton);
 }
 
 function reset(){
@@ -96,6 +107,8 @@ resetButton.addEventListener("click", reset);
 eraseButton.addEventListener("click", eraserToggle);
 borderButton.addEventListener("click", toggleBorder);
 slider.addEventListener("mouseup", changeSize);
+colorPicker.addEventListener("input", colorSelections);
+
 
 //Initalize the grid
 setGrid(16);

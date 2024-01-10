@@ -42,6 +42,7 @@ body, .container{
 }
 
 button{
+    user-select: none;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     border: none;
     border-radius: 7px;

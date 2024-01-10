@@ -1,3 +1,4 @@
+//Getting necessary info from the DOM
 const gridContent = document.querySelector(".grid-content");
 const resetButton = document.querySelector(".resetButton");
 const eraseButton = document.querySelector(".eraser");
@@ -5,12 +6,14 @@ const borderButton = document.querySelector(".toggleBorder");
 const slider = document.getElementById("slide-range");
 const colorPicker = document.getElementById("colorpicker");
 
+//Setting necessary variables for switches and color selections
 var selectedColor = "black"
 var currentColor = selectedColor;
 var drawEnabled = false;
 var eraserEnabled = false;
-var borderSwitch = true;
+var borderSwitch = false;
 
+//This function set up the grid based on the size, and give a grid of "size x size"
 function setGrid(size){
     for(let x = 0; x < size; ++x){
         const gridRow = document.createElement("div");
@@ -26,6 +29,9 @@ function setGrid(size){
         }
         gridContent.appendChild(gridRow);
     }
+    //Formatting the visual of the buttons
+    buttonEmphasis(false, resetButton);
+    buttonEmphasis(false, eraseButton);
     setBorder();
 }
 
@@ -60,20 +66,28 @@ function mouseUp(){
     drawEnabled = false;
 }
 
-//It highlights a button based on if its on or off
+//This function creates the simple animation of a button being pressed down
 function buttonEmphasis(onORoff, button){
     if(onORoff){
-        button.style.backgroundColor = "red";
+        //if it is on, make the animation of pressing down
+        button.style.backgroundColor = "rgb(194, 192, 192)";
+        button.style.boxShadow = "";
+        button.style.marginTop = "10px";
     }else{
+        //if it is off, make the animation of pressing back up/returning to original state
         button.style.backgroundColor = "";
+        button.style.boxShadow = "1px 12px rgb(42, 50, 97)";
+        button.style.marginTop = "";
     }
 }
 
+//switch the button from its original state, then set the border according to the current state
 function toggleBorder(){
     borderSwitch = !borderSwitch;
     setBorder()
 }
 
+//For each square, create a border for each of them
 function setBorder(){
     let gridSquare = document.querySelectorAll(".grid-square");
     buttonEmphasis(borderSwitch, borderButton);
@@ -90,11 +104,19 @@ function eraserToggle(){
     buttonEmphasis(eraserEnabled, eraseButton);
 }
 
+//for each square, turn their backrground color back to white
 function reset(){
     let gridSquare = document.querySelectorAll(".grid-square");
     gridSquare.forEach(element => {element.style.backgroundColor = ""});
+
+    //This is so for the animation of button being pressed and then go back to the state of not being pressed
+    buttonEmphasis(true, resetButton);
+    setTimeout(function () {
+        buttonEmphasis(false, resetButton);
+    }, 100);
 }
 
+//delete all the rows, and then recreate one based on the new size "value"
 function changeSize(){
     let gridRow = document.querySelectorAll(".grid-row");
     gridRow.forEach(element => {element.remove()});
@@ -102,6 +124,7 @@ function changeSize(){
     document.querySelector(".size-text").textContent = this.value + " X " + this.value;
 }
 
+//adding necessary events listener
 gridContent.addEventListener("mouseleave", mouseUp);
 resetButton.addEventListener("click", reset);
 eraseButton.addEventListener("click", eraserToggle);

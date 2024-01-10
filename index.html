@@ -7,20 +7,23 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1 class="title">Etch-A-Sketch!</h1>
-    <div class="buttons">
-        <button class="resetButton">Reset</button>
-        <button class="eraser">Eraser</button>
-        <button class="toggleBorder">Border</button>
-        <input type="color" id="colorpicker" value="#000000">
-    </div>
-    <div class="grid-content">
+    <div class="container">
+        <h1 class="title">Etch-A-Sketch!</h1>
+        <div class="grid-content"></div>
 
-    </div>
-
-    <div class="slide-container">
-        <input type="range" min="8" max="96" value="16" class="slider" id="slide-range">
-        <div class="size-text">16 X 16</div>
+        <div class="option-container">
+            <div class="slide-container">
+                <input type="range" min="8" max="100" value="16" class="slider" id="slide-range">
+                <div class="size-text">16 X 16</div>
+            </div>
+    
+            <div class="buttons">
+                <button class="resetButton">Reset</button>
+                <button class="eraser">Eraser</button>
+                <button class="toggleBorder">Border</button>
+                <input type="color" id="colorpicker" value="#000000">
+            </div>
+        </div>
     </div>
 </body>
 </html>

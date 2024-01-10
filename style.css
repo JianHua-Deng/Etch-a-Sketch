@@ -3,31 +3,62 @@ html{
 }
 
 body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    background-color: rgb(116, 124, 168);
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body, .container, .option-container{
     display: flex;
     flex-direction: column;
+}
+
+body, .container{
     align-items: center;
+    padding: 70px;
+}
+.container{
+    height: 900px;
+    padding-top: 30px;
+    border-radius: 20px;
+    background-color: rgb(79, 93, 218);
+    box-shadow: 1px 40px rgb(57, 66, 148);
+}
+
+.grid-content{
+    background-color: white;
+}
+
+.option-container{
+    gap: 30px;
 }
 
 .buttons{
-
+    width: 500px;
+    display: flex;
+    justify-content:space-evenly;
 }
 
 button{
-    border: 1px solid rgb(82, 82, 82);
-    border-radius: 5px;
-    margin-bottom: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: none;
+    border-radius: 7px;
     width: 100px;
+    height: 30px;
 }
+
 
 .grid-content{
     user-select: none;
     display: flex;
     flex-direction: column;
-    max-width: 700px;
-    max-height: 700px;
-    min-width: 700px;
-    min-height: 700px;
-    border: 1px solid black;
+    max-width: 600px;
+    max-height: 600px;
+    min-width: 600px;
+    min-height: 600px;
+    margin-bottom: 70px;
 }
 
 .grid-row{
@@ -37,7 +68,7 @@ button{
 
 .grid-square{
     flex: 1 1 auto;
-    transition: 0.1s;
+    
 }
 
 .slide-container{
@@ -46,11 +77,32 @@ button{
     min-width: 200px;
     max-width: 600px;
 }
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 5px; /* Specified height */
+    background: rgb(35, 42, 100); /* Grey background */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    margin-bottom: 15px;
+  }
 
-.slide:hover{
-    opacity: 1;
+.slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: rgb(47, 61, 192);
+    cursor: pointer;
 }
+
 
 .size-text{
     align-self: center;
+}
+
+.colorpicker{
+    
 }

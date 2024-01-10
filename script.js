@@ -108,9 +108,7 @@ function reset(){
 
     //This is so for the animation of button being pressed and then go back to the state of not being pressed
     buttonEmphasis(true, resetButton);
-    setTimeout(function () {
-        buttonEmphasis(false, resetButton);
-    }, 100);
+    setTimeout(function () {buttonEmphasis(false, resetButton);}, 200);
 }
 
 //delete all the rows, and then recreate one based on the new size "value"

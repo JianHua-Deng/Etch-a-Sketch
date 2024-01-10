@@ -29,9 +29,6 @@ function setGrid(size){
         }
         gridContent.appendChild(gridRow);
     }
-    //Formatting the visual of the buttons
-    buttonEmphasis(false, resetButton);
-    buttonEmphasis(false, eraseButton);
     setBorder();
 }
 
@@ -70,7 +67,7 @@ function mouseUp(){
 function buttonEmphasis(onORoff, button){
     if(onORoff){
         //if it is on, make the animation of pressing down
-        button.style.backgroundColor = "rgb(194, 192, 192)";
+        button.style.backgroundColor = "rgb(156, 155, 155)";
         button.style.boxShadow = "";
         button.style.marginTop = "10px";
     }else{
@@ -132,6 +129,8 @@ borderButton.addEventListener("click", toggleBorder);
 slider.addEventListener("mouseup", changeSize);
 colorPicker.addEventListener("input", colorSelections);
 
-
+//Formatting the visual of the buttons at start
+buttonEmphasis(false, resetButton);
+buttonEmphasis(false, eraseButton);
 //Initalize the grid
 setGrid(16);

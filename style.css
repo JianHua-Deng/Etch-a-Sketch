@@ -5,7 +5,7 @@ html{
 body{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: white;
-    background-color: rgb(116, 124, 168);
+    background-color: rgb(78, 88, 139);
     max-width: 100%;
     overflow-x: hidden;
 }
@@ -17,18 +17,14 @@ body, .container, .option-container{
 
 body, .container{
     align-items: center;
-    padding: 70px;
+    padding: 50px;
 }
 .container{
-    height: 900px;
+    height: 725px;
     padding-top: 30px;
     border-radius: 20px;
     background-color: rgb(79, 93, 218);
-    box-shadow: 1px 40px rgb(57, 66, 148);
-}
-
-.grid-content{
-    background-color: white;
+    box-shadow: 1px 50px rgb(57, 66, 148);
 }
 
 .option-container{
@@ -52,14 +48,15 @@ button{
 
 
 .grid-content{
+    background-color: white;
     user-select: none;
     display: flex;
     flex-direction: column;
-    max-width: 600px;
-    max-height: 600px;
-    min-width: 600px;
-    min-height: 600px;
-    margin-bottom: 70px;
+    max-width: 500px;
+    max-height: 500px;
+    min-width: 500px;
+    min-height: 500px;
+    margin-bottom: 30px;
 }
 
 .grid-row{
@@ -79,6 +76,7 @@ button{
     max-width: 600px;
 }
 .slider {
+    user-select: none;
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100%; /* Full-width */

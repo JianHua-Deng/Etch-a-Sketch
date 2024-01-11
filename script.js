@@ -89,7 +89,7 @@ function setBorder(){
     let gridSquare = document.querySelectorAll(".grid-square");
     buttonEmphasis(borderSwitch, borderButton);
     if(borderSwitch){
-        gridSquare.forEach(element => {element.style.border = "1px solid rgb(233, 232, 232)"});
+        gridSquare.forEach(element => {element.style.border = "1px solid rgb(233, 232, 233)"});
     }else{
         gridSquare.forEach(element => {element.style.border = ""});
     }

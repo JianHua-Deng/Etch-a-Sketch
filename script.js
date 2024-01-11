@@ -73,7 +73,7 @@ function buttonEmphasis(onORoff, button){
     }else{
         //if it is off, make the animation of pressing back up/returning to original state
         button.style.backgroundColor = "";
-        button.style.boxShadow = "1px 12px rgb(42, 50, 97)";
+        button.style.boxShadow = "1px 12px rgb(59, 70, 133)";
         button.style.marginTop = "";
     }
 }
